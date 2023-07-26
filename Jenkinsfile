@@ -2,28 +2,21 @@ pipeline {
   agent {
     docker {
       image 'nginx:1.25.1-alpine'
-      args '-p 8081:8081'
     }
 
   }
   stages {
     stage('Build') {
       steps {
-        echo 'Hello'
+        sh 'docker build -t desafio10'
       }
     }
 
-    stage('Test') {
-      environment {
-        CI = 'true'
-      }
+    stage('Run') {
       steps {
-        sh './jenkins/scripts/test.sh'
+        sh 'docker run -p 8081:80 desafio10'
       }
     }
 
-  }
-  environment {
-    tag = '1.0'
   }
 }
