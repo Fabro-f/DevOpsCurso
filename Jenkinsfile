@@ -1,30 +1,36 @@
 pipeline {
-  agent any
-  stages {
-    stage('Build') {
-      steps {
-        echo 'Building'
-        git(url: 'https://github.com/Fabro-f/DevOpsCurso/dockerfile', branch: 'main', credentialsId: 'Fabro-f')
-      }
+    environment {
+        registry = "Fabro-f/test"
+        registryCredential = 'dockerhub_id'
+        dockerImage = ''
+        }
+agent any
+stages {
+stage('Cloning our Git') {
+    steps {
+        git branch:"main", url: 'https://github.com/Fabro-f/JENKINS.git'
+        }
+}
+stage('Building our image') {
+    steps{
+        script {
+            dockerImage = docker.build registry + ":$BUILD_NUMBER"
+            }
+        }
+}
+stage('Deploy our image') {
+    steps{
+        script {
+            docker.withRegistry( '', registryCredential ) {
+                dockerImage.push()
+                }
+        }
     }
-
-    stage('Run') {
-      steps {
-        echo 'Runing'
-      }
+}
+stage('Cleaning up') {
+    steps{
+        sh "docker rmi $registry:$BUILD_NUMBER"
+        }
     }
-
-    stage('test') {
-      steps {
-        echo 'testing'
-      }
-    }
-
-    stage('Deploy') {
-      steps {
-        echo 'Subiendo a dockerHub'
-      }
-    }
-
-  }
+}
 }
