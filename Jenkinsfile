@@ -31,12 +31,11 @@ pipeline {
             }
         }
 
-       // stage('Run Tests') {
-      //      steps {
-                // Run your tests here (e.g., using shell commands inside the container)
-                // Example: sh 'docker exec my_container ls /path/to/config/file'
-     //       }
-   //     }
+    stage('Tests') {
+         steps {
+                sh 'docker exec my_container ls /usr/share/nginx/html'
+            }
+        }
 
      //   stage('Push to Docker Hub') {
      //       steps {
