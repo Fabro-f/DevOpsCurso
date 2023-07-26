@@ -26,14 +26,14 @@ pipeline {
             steps {
                 script {
                     // Run Docker container
-                    docker.image("${imageName}:${imageVersion}").run("-p ${portNumber}:80", "--name my_container")
+                    docker.image("${imageName}:${imageVersion}").run("-p ${portNumber}:80", "--name desafio10")
                 }
             }
         }
 
     stage('Tests') {
          steps {
-                sh 'docker exec my_container ls /usr/share/nginx/html'
+                sh 'docker exec desafio10 ls /usr/share/nginx/html'
             }
         }
 
