@@ -31,23 +31,23 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
+       // stage('Run Tests') {
+      //      steps {
                 // Run your tests here (e.g., using shell commands inside the container)
                 // Example: sh 'docker exec my_container ls /path/to/config/file'
-            }
-        }
+     //       }
+   //     }
 
-        stage('Push to Docker Hub') {
-            steps {
-                script {
+     //   stage('Push to Docker Hub') {
+     //       steps {
+   //             script {
                     // Subir docker a dockerhub
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_credentials') {
-                        docker.image("${imageName}:${imageVersion}").push()
-                        docker.image("${imageName}:${imageTag}").push()
-                    }
-                }
-            }
-        }
+      //              docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_credentials') {
+            //            docker.image("${imageName}:${imageVersion}").push()
+      //                  docker.image("${imageName}:${imageTag}").push()
+                    //}
+                //}
+           // }
+        //}
     }
 }
