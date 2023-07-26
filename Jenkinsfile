@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                     // Definicion del path 
-                    def dockerfile = './path/to/your/Dockerfile'
+                    def dockerfile = '/home/vagrant/Dockerfile'
                     
                     // Build Docker imagen
                     docker.build("${imageName}:${imageVersion}", "-t ${imageName}:${imageTag} -f ${dockerfile} .")
