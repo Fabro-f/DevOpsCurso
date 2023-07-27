@@ -6,7 +6,7 @@ pipeline {
         def imageVersion = "1.0.${env.BUILD_NUMBER}"
         def imageName = "fabrof/desafio9"
         def imageTag = "latest"
-        def portNumber= "808${env.BUILD_NUMBER}"
+        def portNumber= "80${env.BUILD_NUMBER}"
     }
 
     stages {
