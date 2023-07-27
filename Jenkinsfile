@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Definicion de variables
-        def dockerhub_credentials = 'dockerhub_credentials'
+        def dockerhub_credentials = 'dockerhub_credential'
         def imageVersion = "1.0.${env.BUILD_NUMBER}"
         def imageName = "fabrof/desafio9"
         def imageTag = "latest"
