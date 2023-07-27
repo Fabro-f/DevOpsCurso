@@ -3,6 +3,8 @@ pipeline {
 
     environment {
         // Definicion de variables
+        def registry = "Fabrof/desafio9"
+        def registryCredential = 'dockerhub_credentials'
         def imageVersion = "1.0.${env.BUILD_NUMBER}"
         def imageName = "fabrof/desafio9"
         def imageTag = "latest"
