@@ -37,16 +37,17 @@ pipeline {
             }
         }
 
-     //   stage('Push to Docker Hub') {
-     //       steps {
-   //             script {
-                    // Subir docker a dockerhub
-      //              docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_credentials') {
-            //            docker.image("${imageName}:${imageVersion}").push()
-      //                  docker.image("${imageName}:${imageTag}").push()
-                    //}
-                //}
-           // }
-        //}
+        stage('Push to Docker Hub') {
+            steps {
+               script {
+                   //Subir docker a dockerhub
+                   docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_credentials') 
+                   {
+                   docker.image("${imageName}:${imageVersion}").push()
+                   docker.image("${imageName}:${imageTag}").push()
+                   }
+                }
+           }
+        }
     }
 }
