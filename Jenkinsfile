@@ -42,7 +42,7 @@ pipeline {
             steps {
                script {
                    //Subir docker a dockerhub
-                   docker.withRegistry(' ', dockerhub_credentials) 
+                   docker.withRegistry(' ', 'dockerhub_credentials') 
                    {
                    docker.image("${imageName}:${imageVersion}").push()
                    docker.image("${imageName}:${imageTag}").push()
