@@ -26,7 +26,7 @@ pipeline {
             steps {
                 script {
                     // Run Docker container
-                    docker.image("${imageName}:${imageVersion}").run( "--name desafio10", "-p ${portNumber}:80")
+                    docker.image("${imageName}:${imageVersion}").run( "-p ${portNumber}:80 --name desafio10", "")
                 }
             }
         }
